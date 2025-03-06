@@ -179,10 +179,10 @@ port, which runs the CLI. The other port only outputs log messages*
 ## 3.1 LOGITacker's modes of operation
 
 - **discover**: Used to find Logitech wireless devices on air aka. pseudo-promiscuous mode (default mode)
-- **passive-enum**: Receives all RX traffic of the selected device address (optained in discover mode or added manually).
+- **passive_enum**: Receives all RX traffic of the selected device address (optained in discover mode or added manually).
 This is basically sniffing, but device information is updated based on received frames (f.e. if plain keyboard reports
 are received, the device is flagged to allow plain keystroke injection)
-- **active-enum**: Actively transmits frames for a discovered device address, in order to test if plain keystroke injection
+- **active_enum**: Actively transmits frames for a discovered device address, in order to test if plain keystroke injection
 is possible (no false positives, but detection doesn't work for devices like presentation clickers). Additionally 
 active-enumeration "talks" to the receiver of a discovered device to find out other accessible RF addresses. This means
 if a mouse is discovered, active-enum could possibly find an input RF address for a keyboard connected to the same 
@@ -548,7 +548,7 @@ For Unifying devices, the device which should be paired has to be turned off and
 R500 / SPOTLIGHT the two buttons used to put the clicker into Bluetooth mode have to pressed and hold.
 
 If nothing has gone wrong, LOGITacker has captured the device address and encryption key. Afterwards, LOGITacker
-changes back from "pair sniff" mode to "passive-enum" mode (default behavior). 
+changes back from "pair sniff" mode to "passive_enum" mode (default behavior). 
 
 Here's some example output of a successful key capture:
 
@@ -604,7 +604,7 @@ Here's some example output of a successful key capture:
 ```
 
 When pressing keys on the - now paired - device, 
-LOGITacker should not only print the encrypted reports, but a decrypted version, too (in passive-enum mode).
+LOGITacker should not only print the encrypted reports, but a decrypted version, too (in passive_enum mode).
 
 Here's an example for the key "RIGHT":
 
@@ -663,7 +663,7 @@ Options:
 Subcommands:
   continue      :stay in injection mode.
   active-enum   :enter active enumeration
-  passive-enum  :enter active enumeration
+  passive_enum  :enter active enumeration
   discover      :enter discover mode
 LOGITacker (injection) $ options inject onsuccess continue 
 LOGITacker (injection) $ options store 
@@ -676,19 +676,19 @@ The process for eavesdropping follows the same steps as described for the "encry
 The link encryption key for a device has either to be added manually (could be extracted from receivers with unrestricted
 version of `munifying`, once released) or to be obtained from sniffing of device pairing.
 
-As pointed out in the previous chapter, passive-enum automatically decrypts received key reports for devices with known
+As pointed out in the previous chapter, passive_enum automatically decrypts received key reports for devices with known
 key. Reading the keys from the CLI output isn't really convenient. To overcome this, LOGITacker allows forwarding of
-decrypted or plain keyboard and mouse frames sniffed in passive-enum mode to its USB interface. The reports are 
+decrypted or plain keyboard and mouse frames sniffed in passive_enum mode to its USB interface. The reports are 
 translated to proper USB HID reports. Thus, the input is ultimately mirrored to the USB host which has LOGITacker 
 connected.
 
 The respective options could be enabled with the following commands:
 
 ```
-LOGITacker (passive enum) $ options passive-enum pass-through-mouse on
-passive-enum USB mouse pass-through: on
-LOGITacker (passive enum) $ options passive-enum pass-through-keyboard on
-passive-enum USB keyboard pass-through: on   
+LOGITacker (passive enum) $ options passive_enum pass-through-mouse on
+passive_enum USB mouse pass-through: on
+LOGITacker (passive enum) $ options passive_enum pass-through-keyboard on
+passive_enum USB keyboard pass-through: on   
 ```
 
 The result should look like in the following video, where the sniffed input of a encrypted keyboard is mirrored to 
@@ -750,7 +750,7 @@ If not done automatically after successful pair-sniffing, the respective keyboar
 pair sniff (available via tab complete).
 
 In order to forward (decrypted) keyboard RF frames to the USB keyboard interface, like shown in the video, the 
-respective option has to be enabled with `options passive-enum pass-through-keyboard on`.
+respective option has to be enabled with `options passive_enum pass-through-keyboard on`.
 
 ## 4.3 Inject keystrokes (encrypted device)
 
