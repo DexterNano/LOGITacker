@@ -1,6 +1,11 @@
 # LOGITacker
 
 **README is still under construction**
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 
 LOGITacker is a hardware tool to enumerate and test vulnerabilities of Logitech Wireless Input devices via RF.
 In contrast to available tooling, it is designed as stand-alone tool. This means not only the low level RF part, 
