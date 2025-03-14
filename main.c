@@ -145,7 +145,7 @@ NRF_CLI_DEF(m_cli_cdc_acm, g_logitacker_cli_name, &m_cli_cdc_acm_transport.trans
 
 #define CLI_NAME_MAX_LEN 64
 char g_logitacker_cli_name[CLI_NAME_MAX_LEN] = "logitacker";
-const app_usbd_hid_generic_t m_app_hid_generic;
+//warinings fix
 int _close(int fd) { return -1; }
 int _lseek(int fd, int ptr, int dir) { return -1; }
 int _read(int fd, char *ptr, int len) { return -1; }
