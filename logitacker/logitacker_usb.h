@@ -166,8 +166,7 @@ typedef enum {
 }
 
 
-extern app_usbd_hid_generic_t m_app_hid_generic; 
-
+extern const app_usbd_hid_generic_t m_app_hid_generic;
 
 // User event handler.
 //static void usbd_hid_generic_event_handler(app_usbd_class_inst_t const * p_inst, app_usbd_hid_user_event_t event);
