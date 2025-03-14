@@ -156,7 +156,7 @@ void logitacker_enter_mode_passive_enum(uint8_t *rf_address) {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_PASSIVE_ENUMERATION;
-    sprintf(g_logitacker_cli_name, "LOGITacker (passive enum) $ ");
+   snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (passive enum) $ ");
 }
 
 void logitacker_enter_mode_prx(uint8_t *rf_address) {
@@ -165,7 +165,7 @@ void logitacker_enter_mode_prx(uint8_t *rf_address) {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_PRX;
-    sprintf(g_logitacker_cli_name, "LOGITacker (prx) $ ");
+   snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (prx) $ ");
 }
 
 
@@ -176,7 +176,7 @@ void logitacker_enter_mode_pair_sniff() {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_SNIFF_PAIRING;
-    sprintf(g_logitacker_cli_name, "LOGITacker (sniff pairing) $ ");
+    snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (sniff pairing) $ ");
 }
 
 
@@ -187,7 +187,7 @@ void logitacker_enter_mode_active_enum(uint8_t *rf_address) {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_ACTIVE_ENUMERATION;
-    sprintf(g_logitacker_cli_name, "LOGITacker (active enum) $ ");
+    snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (active enum) $ ");
 }
 
 void logitacker_enter_mode_covert_channel(uint8_t *rf_address, nrf_cli_t const *p_cli) {
@@ -197,8 +197,8 @@ void logitacker_enter_mode_covert_channel(uint8_t *rf_address, nrf_cli_t const *
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_COVERT_CHANNEL;
-    //sprintf(g_logitacker_cli_name, "LOGITacker (covert channel) $ ");
-    sprintf(g_logitacker_cli_name, " "); // empty prompt, use the one from bound shell
+    //snprintf(g_logitacker_cli_name, "LOGITacker (covert channel) $ ");
+   snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, " "); // empty prompt, use the one from bound shell
 }
 
 static uint8_t temp_dev_id = 1;
@@ -231,7 +231,7 @@ void logitacker_enter_mode_pair_device(uint8_t const *rf_address) {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_PAIR_DEVICE;
-    sprintf(g_logitacker_cli_name, "LOGITacker (pair device) $ ");
+    snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (pair device) $ ");
 
 }
 
@@ -242,7 +242,7 @@ void logitacker_enter_mode_injection(uint8_t const *rf_address) {
     p_processor->p_init_func(p_processor);
 
     m_state_local.mainstate = LOGITACKER_MODE_INJECT;
-    sprintf(g_logitacker_cli_name, "LOGITacker (injection) $ ");
+    snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (injection) $ ");
 }
 
 void logitacker_enter_mode_discovery() {
@@ -254,7 +254,7 @@ void logitacker_enter_mode_discovery() {
     p_processor->p_init_func(p_processor); //call init function
 
     m_state_local.mainstate = LOGITACKER_MODE_DISCOVERY;
-    sprintf(g_logitacker_cli_name, "LOGITacker (discover) $ ");
+   snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker (discover) $ ");
 
 }
 
@@ -292,7 +292,7 @@ uint8_t rf_addr_usb[5] = {0};
 
 uint32_t logitacker_init() {
     logitacker_options_init_state();
-    sprintf(g_logitacker_cli_name, "LOGITacker $ ");
+    snprintf(g_logitacker_cli_name, CLI_NAME_MAX_LEN, "LOGITacker $ ");
     logitacker_flash_init();
     logitacker_options_restore_from_flash(); // try to restore options from flash (updates stats like boot count)
     logitacker_options_store_to_flash(); // store back updated options
