@@ -143,7 +143,8 @@ void unifying_event_handler(unifying_evt_t const *p_event) {
 NRF_CLI_CDC_ACM_DEF(m_cli_cdc_acm_transport);
 NRF_CLI_DEF(m_cli_cdc_acm, g_logitacker_cli_name, &m_cli_cdc_acm_transport.transport, '\r', 20);
 
-const char g_logitacker_cli_name[] = "logitacker";
+#define CLI_NAME_MAX_LEN 64
+char g_logitacker_cli_name[CLI_NAME_MAX_LEN] = "logitacker";
 const app_usbd_hid_generic_t m_app_hid_generic;
 int _close(int fd) { return -1; }
 int _lseek(int fd, int ptr, int dir) { return -1; }
