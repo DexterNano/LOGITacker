@@ -47,8 +47,7 @@ typedef enum {
     LOGITACKER_MODE_IDLE
 } logitacker_mode_t;
 
-extern char *g_logitacker_cli_name;
-
+extern const char g_logitacker_cli_name[];
 uint32_t logitacker_init();
 
 void logitacker_enter_mode_discovery();
