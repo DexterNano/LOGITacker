@@ -148,7 +148,7 @@ static void main_event_handler_bsp(bsp_event_t ev) {
                                       ev); // call BSP handler function of p_processor and hand in p_processor (self) as first arg
 }
 
-
+#define CLI_NAME_MAX_LEN 64
 // Transfers execution to active_enum_process_sub_event
 void logitacker_enter_mode_passive_enum(uint8_t *rf_address) {
     if (p_processor != NULL && p_processor->p_deinit_func != NULL) (*p_processor->p_deinit_func)(p_processor);
