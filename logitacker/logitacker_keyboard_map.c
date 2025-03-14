@@ -216,7 +216,6 @@ uint32_t logitacker_keyboard_map_combo_str_to_hid_report(char const *in_str,
 /* maps the given wchar to respective HID report sequence (currently only US,DE layout) */
 uint32_t logitacker_keyboard_map_wc_to_hid_reports(hid_keyboard_report_t **p_out_report_seq, uint32_t *out_rep_seq_len,
                                                    logitacker_keyboard_map_lang_t in_layout, wchar_t in_rune) {
-
     if (in_layout == LANGUAGE_LAYOUT_US) {
         switch (in_rune) {
             LAYOUT_US(LAYOUT_SWITCH_CASE)
@@ -226,6 +225,12 @@ uint32_t logitacker_keyboard_map_wc_to_hid_reports(hid_keyboard_report_t **p_out
     } else if (in_layout == LANGUAGE_LAYOUT_DE) {
         switch (in_rune) {
             LAYOUT_DE(LAYOUT_SWITCH_CASE)
+            default:
+                return NRF_ERROR_INVALID_PARAM;
+        }
+    } else if (in_layout == LANGUAGE_LAYOUT_ES) {  //ES case
+        switch (in_rune) {
+            LAYOUT_ES(LAYOUT_SWITCH_CASE)
             default:
                 return NRF_ERROR_INVALID_PARAM;
         }
@@ -241,13 +246,6 @@ uint32_t logitacker_keyboard_map_wc_to_hid_reports(hid_keyboard_report_t **p_out
             default:
                 return NRF_ERROR_INVALID_PARAM;
         }
-        else if (in_layout == LANGUAGE_LAYOUT_ES) {
-    switch (in_rune) {
-        LAYOUT_ES(LAYOUT_SWITCH_CASE)
-        default:
-            return NRF_ERROR_INVALID_PARAM;
-    }
-}
     } else {
         return NRF_ERROR_INVALID_PARAM;
     }
